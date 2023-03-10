@@ -1,0 +1,571 @@
+
+/*                                                               */
+/*                                                               */
+/*    AUTHOR: LOUIS BLANC
+/*    VERSION 0.5                                                           */
+/*                                                               */
+/*                                                               */
+/*       Probleme: Warum kein adaptatives Verhalten auf HANDY?                                                        */
+/*                                                               */
+/*                                                               */
+/*                                                               */
+/*                                                               */
+/*                                                               */
+/*                                                               */
+/*                                                               */
+/*                                                               */
+/*                                                               */
+/*                                                               */
+/*                                                               */
+/*                                                               */
+/*                                                               */
+/*                                                               */
+/*                                                               */
+/*                                                               */
+/*                                                               */
+/*                                                               */
+
+/* kann ins styles.css ausgelagert werden --- Im Style muss der Kommentar so formattiert sein */
+
+
+
+@font-face {
+   font-family: "publicsans";
+   src: url(../fonts/publicsans-thin.ttf);
+}
+
+@font-face {
+   font-family: "texgyre";
+   src: url(../fonts/urbanist-bold.ttf);
+}
+
+
+
+
+p, a, .btn, .btn-primary, .gallery_item, .gallery_tabs, .gallery_items {
+  font-family: "publicsans", sans-serif, Arial, Helvetica, Verdana; /* Set font for all text elements */
+}
+.logo, .menu-items, .menu-items a, h1, h2, h3, h4, h5, h6 {
+  font-family: 'texgyre', sans-serif; /* Set font for the navbar */
+  font-weight: bold; 
+}
+:root {
+  --bgrcolor1: linen;
+  --bgrcolor2:  white;
+  --bgrcolor3:  white;
+  --txtcolor1: #333;
+  --txtcolor2: #333;
+  --blogtxtbackgroundcolor: linen;
+  --menubgcolor1: green;
+  --menubgcolor2: #333;
+  --menutxtcolor_norm: linen; 
+  --menutxtcolor_hover: orangered; 
+  --txttitlecolor1: #000;
+  --txttitlecolor2: #000;
+  --txttitlecolor3: white; 
+  --titlebgrcolor1: #000;
+  --hamburgercolor: orangered;
+  font-family: myFirstFont;
+}
+
+html {
+  scroll-behavior: smooth;
+} 
+
+body {
+background: var(--bgrcolor1);
+color: var(--txtcolor1);
+}
+
+
+
+/* Klassen */   /* Klassen */   /* Klassen */   /* Klassen */   /* Klassen */   /* Klassen */   /* Klassen */   /* Klassen */   /* Klassen */   /* Klassen */   
+/* Klassen */   /* Klassen */   /* Klassen */   /* Klassen */   /* Klassen */   /* Klassen */      
+
+.btn {
+  display: inline-block;
+  padding: 0.5em 1.5em;
+  text-decoration: none;
+  border-radius: 20px;
+  cursor: pointer;
+  outline: none;
+  margin-top: 1em;
+}
+
+.btn-primary {
+  color: #fff;
+  background: var(--menubgcolor1);
+}
+
+.btn-primary:hover {
+  color: var(--hamburgercolor);
+  transition: background 0.3s ease-in-out;
+}
+/* Hintergrundbild URL des Splashscreens */
+.splashscreenarea{
+  height: 100vh; 
+  background: url("../image1.jpg");    
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 5;
+}
+
+/* beschreibt die Navigationsleiste */
+
+/* im Desktopmodus */
+.navbar input[type="checkbox"],
+.navbar .hamburger-lines {
+  display: none;
+ z-index: 15;
+}
+
+.navbar {
+ position: fixed;
+alignement: center;
+top: 0px;
+right: 0px;
+left:0 px;
+ width: 100%;
+ background: var(--menubgcolor1);
+ color: var(--menutxtcolor_norm);
+ opacity: 0.9;
+ height: 100px;
+ z-index: 10;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  height: 64px;
+  align-items: center;
+z-index: 10; 
+}
+
+
+.menu-items {
+  order: 3;
+padding-right: 50px;
+  display: flex;
+z-index: 14;
+}
+
+.menu-items li {
+  list-style: none;
+  margin-left: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+font-weight: bold;
+z-index: 14;
+}
+
+/* Menu Items nicht geklickt */
+.menu-items a {
+  text-decoration: none;
+  color: var(--menutxtcolor_norm);
+  font-weight: 500;
+font-weight: bold;
+  transition: color 0.3s ease-in-out;
+}
+
+/* Hover �ber Menu items */
+
+.menu-items a:hover {
+  color: var(--menutxtcolor_hover);
+  transition: color 0.1s ease-in-out;
+}
+
+.logo {
+  order: 1;
+  font-size: 2.3rem;
+  margin-bottom: 0.5rem;
+}
+@media (max-width: 768px) {
+  .navbar {
+    opacity: 0.95;
+  } 
+
+.navbar-container input[type="checkbox"],
+  .navbar-container .hamburgerlinien {
+    display: block;
+  }
+
+  .navbar-container {
+    display: block;
+    position: relative;
+    height: 64px;
+    background: var(--menubgcolor1);
+    z-index: 20;
+  }
+
+  .navbar-container input[type="checkbox"] {
+    position: absolute;
+    display: block;
+    height: 32px;
+    width: 30px;
+    top: 20px;
+    left: 20px;
+    opacity: 0;
+  }
+
+.navbar-container .hamburgerlinien {
+    display: block;
+    height: 23px;
+    width: 35px;
+    position: absolute;
+    top: 17px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 7;
+  }
+
+ .navbar-container .hamburgerlinien .linie {
+    display: block;
+    height: 4px;
+    width: 100%;
+    border-radius: 10px;
+    background-color: var(--hamburgercolor);
+  }
+
+ .navbar-container .hamburgerlinien .linie1 {
+    transform-origin: 0% 0%;
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .navbar-container .hamburgerlinien .linie2 {
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .navbar-container .hamburgerlinien .linie3 {
+    transform-origin: 0% 100%;
+    transition: transform 0.4s ease-in-out;
+  }
+
+.navbar .menu-items {
+    padding-top: 100px;
+    background: var(--menubgcolor1);
+    height: 50vh;
+    max-width: 300px;
+    transform: translate(-150%);
+    display: flex;
+    flex-direction: column;
+    margin-left: -40px;
+    padding-left: 50px;
+    transition: transform 0.5s ease-in-out;
+    box-shadow: 0px 0px 0px 0px #aaa;
+z-index:10;
+  }
+
+ .navbar .menu-items li {
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+
+.logo {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    font-size: 2rem;
+  }
+
+ .navbar-container input[type="checkbox"]:checked ~ .menu-items {
+    transform: translateX(0);
+  }
+ .navbar-container input[type="checkbox"]:checked ~ .hamburgerlinien .linie1 {
+    transform: rotate(50deg);
+  }
+  .navbar-container input[type="checkbox"]:checked ~ .hamburgerlinien .linie2 {
+    transform: scaleY(0);
+  }
+ 
+.navbar-container input[type="checkbox"]:checked ~ .hamburgerlinien .linie3  {
+    transform: rotate(-40deg);
+  }
+  .gallery_wrapper {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+  }
+}
+
+.splashscreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 1.6rem;
+}
+
+.blog-text {
+background: var(--blogtxtbackgroundcolor);
+color: var(--);
+font-size: 1.4rem;
+fonts/publicsans-thin;
+}
+
+.blog-entry {
+margin-left: auto;
+margin-right: auto;
+margin-top: 50px;
+margin-bottom: 50px;
+padding-left: 150px;
+padding-right: 100px;
+width: 30%;
+border-bottom-style: solid;
+border-color: var(--txtcolor1);
+border-width: 10px;
+background: var(--blogtxtbackgroundcolor);
+}
+
+.blog-datum {
+font-size: 0.6rem;
+color: var(--hamburgercolor);
+border-top: dotted;
+border-bottom: dotted; 
+margin-width: 3px;
+}
+
+.blog-image{
+
+  z-index: 995;
+  max-width: 100vw;
+  max-height: 50vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  overflow-x: cover;
+  border-width: 10px;
+  overflow-y: cover;
+  border-radius: 20px;
+  box-shadow: 4px 4px;
+ }
+ 
+.blog-title {
+/* background: var(--titlebgrcolor1); */
+border-bottom-style: dotted;
+border-color: var(--txtcolor1);
+font-size: 3rem;
+border-width: 1px;
+padding: 15px;
+box-shadow: 4px, 4px;
+}
+
+
+/*--====== CSS Reset ======-
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}*/
+
+
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  vertical-align: middle;
+}
+
+ul {
+  list-style: none;
+}
+
+.overflow_hide {
+  overflow: hidden;
+}
+
+/*--====== Gallery Section ======--*/
+#gallery {
+  padding-top: 10rem;
+  padding-bottom: 2rem;
+}
+.container {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+/* Filterable Gallery */
+.gallery_tabs {
+  background-color: var(--bgrcolor1);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  row-gap: 0.8rem;
+  padding: 1.2rem;
+  border-radius: 10px;
+}
+
+.gallery_tabs li {
+  padding: 0.7rem 2rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+background-color: var(--bgrcolor2);
+}
+.gallery_tabs li.active,
+.gallery_tabs li:hover {
+  
+  color: var(--hamburgercolor);
+}
+.gallery_wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 4rem;
+
+}
+.gallery_item {
+  border-radius: 20px;
+  cursor: pointer;
+  overflow: hidden;
+  max-height: 200px;
+  max-width: 200px;
+}
+
+/* when the gallery_item has 'show' class */
+.gallery_item.show {
+  animation: fadeIn 0.4s ease-in;
+}
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+/* when the gallery_item has 'hide' class */
+.gallery_item.hide {
+  display: none;
+}
+.gallery_item img {
+  transition: transform 0.3s ease;
+}
+.gallery_item:hover img {
+  transform: scale(1.1);
+}
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 995;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  overflow-x: hidden;
+  overflow-y: auto;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s ease, opacity 0.3s ease;
+}
+/* when the lightbox is open */
+.lightbox.open {
+  pointer-events: all;
+  visibility: visible;
+  opacity: 1;
+}
+.lightbox_wrapper {
+  display: grid;
+  place-items: center;
+  min-height: calc(100% - 3rem);
+  margin: 1.5rem;
+}
+
+@media (max-width: 575.98px) {
+  .lightbox_wrapper {
+      margin: 0.5rem;
+      min-height: calc(100% - 1rem);
+  }
+}
+
+.lightbox_content {
+  box-shadow: var(--box-shadow);
+  max-width:700px;
+  width: 100% 
+  border-radius: 10px;
+  text-align: center;
+  overflow: hidden;
+  transform: scale(0);
+ 
+  transition: transform 0.5s ease;
+}
+/* when Lightbox is open then lightbox-content will... */
+.lightbox.open .lightbox_content {
+  transform: scale(1);
+}
+/* lightbox-close-btn */
+.lightbox_close {
+  position: absolute;
+  top: 10vh;
+  right: 10vw;
+  z-index: 999;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+.lightbox_close span {
+  width: 100%;
+  height: 3px;
+  margin-top: -1.5px;
+  margin-bottom: -1.5px;
+  background-color: #ddd;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+.lightbox_close:hover span {
+  opacity: 1;
+}
+.lightbox_close span:first-child {
+  transform: rotate(45deg);
+}
+.lightbox_close span:last-child {
+  transform: rotate(-45deg);
+}
+
+
+
+/* ENDE LIGHTBOX */
+/* ENDE LIGHTBOX */
+/* ENDE LIGHTBOX */
+/* ENDE LIGHTBOX */
+/* ENDE LIGHTBOX */
+/* ENDE LIGHTBOX */
+
+
+/* variabler Teil, je nah Media typ @media */
+
+
+  
+  
+@media (min-width: 769px) and (max-width: 1200px) {
+  .img-container h3 {
+    font-size: 1.5rem;
+  }
+
+  .img-container .btn {
+    font-size: 0.7rem;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .showcase-area {
+    height: 50vmax;
+  }
+
+
+/* ENDE VARIABLER TEIL */
+}
